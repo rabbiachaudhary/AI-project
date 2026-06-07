@@ -52,16 +52,16 @@ export default function CreatePost() {
   }
 
   return (
-    <div className="max-w-2xl mx-auto">
+    <div className="max-w-2xl mx-auto w-full min-w-0">
       <button
         onClick={() => navigate(-1)}
-        className="text-sm text-gray-400 hover:text-gray-600 mb-4 flex items-center gap-1"
+        className="text-sm text-gray-400 hover:text-gray-600 mb-3 sm:mb-4 flex items-center gap-1"
       >
         ← Back
       </button>
 
-      <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-8">
-        <h1 className="text-2xl font-bold text-gray-900 mb-1">Share Your Experience</h1>
+      <div className="bg-white rounded-xl sm:rounded-2xl shadow-sm border border-gray-100 p-4 sm:p-8">
+        <h1 className="text-xl sm:text-2xl font-bold text-gray-900 mb-1">Share Your Experience</h1>
         <p className="text-gray-500 text-sm mb-6">
           Write your skin condition story — AI will extract the details for you
         </p>
@@ -167,17 +167,17 @@ export default function CreatePost() {
               </div>
             </div>
 
-            <div className="flex gap-3 pt-2">
+            <div className="flex flex-col-reverse sm:flex-row gap-2 sm:gap-3 pt-2">
               <button
                 onClick={() => setAnalysis(null)}
-                className="flex-1 border border-gray-200 text-gray-600 hover:bg-gray-50 font-medium py-2.5 rounded-lg transition-colors text-sm"
+                className="w-full sm:flex-1 border border-gray-200 text-gray-600 hover:bg-gray-50 font-medium py-2.5 rounded-lg transition-colors text-sm"
               >
                 ← Edit Story
               </button>
               <button
                 onClick={handlePost}
                 disabled={posting}
-                className="flex-2 flex-grow bg-teal-600 hover:bg-teal-700 text-white font-medium py-2.5 px-6 rounded-lg transition-colors disabled:opacity-60 flex items-center justify-center gap-2"
+                className="w-full sm:flex-grow bg-teal-600 hover:bg-teal-700 text-white font-medium py-2.5 px-6 rounded-lg transition-colors disabled:opacity-60 flex items-center justify-center gap-2"
               >
                 {posting ? (
                   <>

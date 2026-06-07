@@ -84,19 +84,19 @@ export default function Home() {
           <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-teal-300 rounded-full blur-3xl" />
         </div>
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-24 sm:pt-20 sm:pb-28">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-16 sm:pt-20 sm:pb-28">
           <div className="max-w-3xl mx-auto text-center">
             <span className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 text-teal-50 text-sm font-medium px-4 py-1.5 rounded-full mb-6">
               <span className="w-2 h-2 bg-emerald-300 rounded-full animate-pulse" />
               AI-powered health community
             </span>
 
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white tracking-tight leading-tight mb-5">
+            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-bold text-white tracking-tight leading-tight mb-4 sm:mb-5">
               Real health stories.
               <span className="block text-teal-200">Smarter decisions.</span>
             </h1>
 
-            <p className="text-lg sm:text-xl text-teal-100/90 leading-relaxed mb-8 max-w-2xl mx-auto">
+            <p className="text-base sm:text-xl text-teal-100/90 leading-relaxed mb-6 sm:mb-8 max-w-2xl mx-auto px-1">
               HealNet connects you with community experiences, an AI health assistant, and skin
               condition detection — so you never navigate health alone.
             </p>
@@ -135,7 +135,7 @@ export default function Home() {
               )}
             </div>
 
-            <form onSubmit={handleSearch} className="max-w-xl mx-auto flex gap-2">
+            <form onSubmit={handleSearch} className="max-w-xl mx-auto flex flex-col sm:flex-row gap-2 w-full">
               <input
                 value={searchQuery}
                 onChange={(e) => {
@@ -143,12 +143,12 @@ export default function Home() {
                   if (!e.target.value) setSearchResults(null)
                 }}
                 placeholder="Search symptoms, diseases, medications…"
-                className="flex-1 rounded-xl px-4 py-3 text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-white/50 shadow-lg"
+                className="flex-1 min-w-0 rounded-xl px-4 py-3 text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-white/50 shadow-lg"
               />
               <button
                 type="submit"
                 disabled={searching}
-                className="bg-teal-900/40 backdrop-blur-sm border border-white/20 text-white font-medium px-6 py-3 rounded-xl hover:bg-teal-900/60 transition-colors disabled:opacity-60"
+                className="w-full sm:w-auto bg-teal-900/40 backdrop-blur-sm border border-white/20 text-white font-medium px-6 py-3 rounded-xl hover:bg-teal-900/60 transition-colors disabled:opacity-60"
               >
                 {searching ? '…' : 'Search'}
               </button>
@@ -156,7 +156,7 @@ export default function Home() {
           </div>
 
           {/* Stats strip */}
-          <div className="mt-16 grid grid-cols-3 gap-4 max-w-lg mx-auto">
+          <div className="mt-10 sm:mt-16 grid grid-cols-3 gap-2 sm:gap-4 max-w-lg mx-auto">
             {[
               { value: posts.length || '—', label: 'Stories shared' },
               { value: '3', label: 'AI tools' },
@@ -172,22 +172,22 @@ export default function Home() {
       </section>
 
       {/* Features */}
-      <section id="features" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-        <div className="text-center mb-14">
-          <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+      <section id="features" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-20">
+        <div className="text-center mb-8 sm:mb-14">
+          <h2 className="text-2xl sm:text-4xl font-bold text-gray-900 mb-3 sm:mb-4">
             Everything you need in one place
           </h2>
-          <p className="text-gray-500 text-lg max-w-2xl mx-auto">
+          <p className="text-gray-500 text-base sm:text-lg max-w-2xl mx-auto">
             From sharing your journey to getting AI-powered insights — HealNet is built for
             skin health and beyond.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
           {FEATURES.map((f) => (
             <div
               key={f.title}
-              className="bg-white rounded-2xl border border-gray-100 p-7 hover:border-teal-200 hover:shadow-md transition-all group"
+              className="bg-white rounded-xl sm:rounded-2xl border border-gray-100 p-5 sm:p-7 hover:border-teal-200 hover:shadow-md transition-all group"
             >
               <div className="w-12 h-12 bg-teal-50 rounded-xl flex items-center justify-center text-2xl mb-5 group-hover:scale-110 transition-transform">
                 {f.icon}
@@ -210,13 +210,13 @@ export default function Home() {
 
       {/* How it works */}
       <section className="bg-white border-y border-gray-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-          <div className="text-center mb-14">
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">How it works</h2>
-            <p className="text-gray-500 text-lg">Three simple steps to get value from HealNet</p>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-20">
+          <div className="text-center mb-8 sm:mb-14">
+            <h2 className="text-2xl sm:text-4xl font-bold text-gray-900 mb-3 sm:mb-4">How it works</h2>
+            <p className="text-gray-500 text-base sm:text-lg">Three simple steps to get value from HealNet</p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
             {STEPS.map((s) => (
               <div key={s.step} className="relative text-center md:text-left">
                 <span className="text-5xl font-bold text-teal-100">{s.step}</span>
@@ -229,10 +229,10 @@ export default function Home() {
       </section>
 
       {/* Community feed */}
-      <section id="community" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
-          <div>
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-2">
+      <section id="community" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-20">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-6 sm:mb-8">
+          <div className="min-w-0">
+            <h2 className="text-2xl sm:text-4xl font-bold text-gray-900 mb-2">
               {searchResults ? 'Search results' : 'Community feed'}
             </h2>
             <p className="text-gray-500">
@@ -241,7 +241,7 @@ export default function Home() {
                 : 'Recent health experiences from the community'}
             </p>
           </div>
-          <div className="flex gap-2">
+          <div className="flex flex-wrap gap-2">
             {searchResults && (
               <button
                 onClick={() => {
@@ -256,14 +256,14 @@ export default function Home() {
             {user ? (
               <Link
                 to="/create"
-                className="bg-teal-600 hover:bg-teal-700 text-white text-sm font-medium px-5 py-2.5 rounded-xl transition-colors"
+                className="flex-1 sm:flex-none text-center bg-teal-600 hover:bg-teal-700 text-white text-sm font-medium px-5 py-2.5 rounded-xl transition-colors"
               >
                 + Share experience
               </Link>
             ) : (
               <Link
                 to="/register"
-                className="bg-teal-600 hover:bg-teal-700 text-white text-sm font-medium px-5 py-2.5 rounded-xl transition-colors"
+                className="flex-1 sm:flex-none text-center bg-teal-600 hover:bg-teal-700 text-white text-sm font-medium px-5 py-2.5 rounded-xl transition-colors"
               >
                 Join to share
               </Link>
@@ -304,8 +304,8 @@ export default function Home() {
 
       {/* Bottom CTA */}
       {!user && (
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
-          <div className="bg-gradient-to-r from-teal-600 to-teal-700 rounded-3xl px-8 py-14 sm:px-16 text-center">
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12 sm:pb-20">
+          <div className="bg-gradient-to-r from-teal-600 to-teal-700 rounded-2xl sm:rounded-3xl px-5 py-10 sm:px-16 sm:py-14 text-center">
             <h2 className="text-2xl sm:text-3xl font-bold text-white mb-3">
               Ready to join the community?
             </h2>
@@ -333,21 +333,21 @@ export default function Home() {
 
       {/* Footer */}
       <footer className="border-t border-gray-200 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10">
+          <div className="flex flex-col items-center gap-5 sm:gap-4 text-center sm:text-left sm:flex-row sm:items-center sm:justify-between">
             <div className="flex items-center gap-2">
               <div className="w-7 h-7 bg-teal-600 rounded-lg flex items-center justify-center">
                 <span className="text-white text-xs font-bold">H</span>
               </div>
               <span className="font-bold text-gray-900">HealNet</span>
             </div>
-            <div className="flex items-center gap-6 text-sm text-gray-500">
+            <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-sm text-gray-500">
               <Link to="/chat" className="hover:text-gray-900 transition-colors">AI Chat</Link>
               <Link to="/detect" className="hover:text-gray-900 transition-colors">Skin Detector</Link>
               <Link to="/login" className="hover:text-gray-900 transition-colors">Sign in</Link>
               <Link to="/register" className="hover:text-gray-900 transition-colors">Sign up</Link>
             </div>
-            <p className="text-xs text-gray-400">
+            <p className="text-xs text-gray-400 max-w-xs sm:max-w-none">
               Not a substitute for professional medical advice.
             </p>
           </div>

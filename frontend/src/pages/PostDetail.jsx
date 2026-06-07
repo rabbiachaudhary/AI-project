@@ -132,12 +132,12 @@ export default function PostDetail() {
   if (!post) return null
 
   return (
-    <div className="max-w-2xl mx-auto">
-      <button onClick={() => navigate(-1)} className="text-sm text-gray-400 hover:text-gray-600 mb-4 flex items-center gap-1">
+    <div className="max-w-2xl mx-auto w-full min-w-0">
+      <button onClick={() => navigate(-1)} className="text-sm text-gray-400 hover:text-gray-600 mb-3 sm:mb-4 flex items-center gap-1">
         ← Back to feed
       </button>
 
-      <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-8 mb-6">
+      <div className="bg-white rounded-xl sm:rounded-2xl shadow-sm border border-gray-100 p-4 sm:p-8 mb-4 sm:mb-6">
 
         {isEditing ? (
           /* ── Edit mode ── */
@@ -181,16 +181,16 @@ export default function PostDetail() {
         ) : (
           /* ── View mode ── */
           <>
-            <div className="flex items-start justify-between mb-4">
-              <div className="flex-1 min-w-0 pr-4">
-                <h1 className="text-2xl font-bold text-gray-900 mb-2">{post.title}</h1>
+            <div className="flex flex-col-reverse sm:flex-row sm:items-start sm:justify-between gap-3 sm:gap-4 mb-4">
+              <div className="flex-1 min-w-0">
+                <h1 className="text-xl sm:text-2xl font-bold text-gray-900 mb-2 break-words">{post.title}</h1>
                 <p className="text-sm text-gray-400">
                   by <span className="font-medium text-gray-600">{post.author_username}</span>{' '}
                   · {new Date(post.created_at).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}
                 </p>
               </div>
 
-              <div className="flex items-center gap-2 flex-shrink-0">
+              <div className="flex items-center gap-2 flex-shrink-0 self-start sm:self-auto">
                 {isOwner && (
                   <>
                     <button
@@ -244,23 +244,23 @@ export default function PostDetail() {
       </div>
 
       {/* Comments */}
-      <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
+      <div className="bg-white rounded-xl sm:rounded-2xl shadow-sm border border-gray-100 p-4 sm:p-6">
         <h2 className="font-semibold text-gray-800 mb-4">
           {comments.length} Comment{comments.length !== 1 ? 's' : ''}
         </h2>
 
         {user && (
-          <form onSubmit={handleComment} className="mb-6 flex gap-2">
+          <form onSubmit={handleComment} className="mb-6 flex flex-col sm:flex-row gap-2">
             <input
               value={newComment}
               onChange={(e) => setNewComment(e.target.value)}
               placeholder="Add your thoughts or experience…"
-              className="flex-1 border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
+              className="flex-1 min-w-0 border border-gray-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
             />
             <button
               type="submit"
               disabled={submitting || !newComment.trim()}
-              className="bg-teal-600 text-white text-sm font-medium px-4 py-2 rounded-lg hover:bg-teal-700 transition-colors disabled:opacity-60"
+              className="w-full sm:w-auto bg-teal-600 text-white text-sm font-medium px-4 py-2.5 rounded-lg hover:bg-teal-700 transition-colors disabled:opacity-60"
             >
               Post
             </button>

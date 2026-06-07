@@ -67,47 +67,50 @@ export default function SkinDetector() {
   }
 
   return (
-    <div className="max-w-3xl mx-auto">
-      <div className="mb-5">
-        <h1 className="text-2xl font-bold text-gray-900">AI Skin Disease Detector</h1>
-        <p className="text-sm text-gray-400 mt-1">
+    <div className="max-w-3xl mx-auto w-full min-w-0">
+      <div className="mb-4 sm:mb-5">
+        <h1 className="text-xl sm:text-2xl font-bold text-gray-900">AI Skin Disease Detector</h1>
+        <p className="text-sm text-gray-400 mt-1 leading-relaxed">
           Upload your image below — then enter the detected condition to get community insights from HealNet
         </p>
       </div>
 
       {/* ── Step 1: HF Space iframe ── */}
-      <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden mb-4">
-        <div className="px-5 py-3 border-b border-gray-100 flex items-center gap-2">
-          <span className="w-2 h-2 rounded-full bg-teal-500" />
-          <span className="text-sm font-medium text-gray-700">Step 1 — Upload your image and get a diagnosis</span>
+      <div className="bg-white rounded-xl sm:rounded-2xl shadow-sm border border-gray-100 overflow-hidden mb-4">
+        <div className="px-4 sm:px-5 py-3 border-b border-gray-100 flex items-start gap-2">
+          <span className="w-2 h-2 rounded-full bg-teal-500 flex-shrink-0 mt-1.5" />
+          <span className="text-xs sm:text-sm font-medium text-gray-700 leading-snug">
+            Step 1 — Upload your image and get a diagnosis
+          </span>
         </div>
         <iframe
           src="https://jamesnixon94-skin-conditions.hf.space"
           title="Skin Disease Detector"
           allow="camera"
-          className="w-full border-0"
-          style={{ height: '580px' }}
+          className="w-full border-0 h-[55vh] min-h-[320px] sm:h-[580px] sm:min-h-0"
         />
       </div>
 
       {/* ── Step 2: Enter detected disease → RAG ── */}
-      <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 mb-4">
-        <div className="flex items-center gap-2 mb-4">
-          <span className="w-2 h-2 rounded-full bg-teal-500" />
-          <span className="text-sm font-medium text-gray-700">Step 2 — Get HealNet community insights for the detected condition</span>
+      <div className="bg-white rounded-xl sm:rounded-2xl shadow-sm border border-gray-100 p-4 sm:p-6 mb-4">
+        <div className="flex items-start gap-2 mb-4">
+          <span className="w-2 h-2 rounded-full bg-teal-500 flex-shrink-0 mt-1.5" />
+          <span className="text-xs sm:text-sm font-medium text-gray-700 leading-snug">
+            Step 2 — Get HealNet community insights for the detected condition
+          </span>
         </div>
 
-        <form onSubmit={handleGetInsights} className="flex gap-2">
+        <form onSubmit={handleGetInsights} className="flex flex-col sm:flex-row gap-2">
           <input
             value={disease}
             onChange={(e) => { setDisease(e.target.value); setResult(null) }}
             placeholder="e.g. Acne, Psoriasis, Eczema…"
-            className="flex-1 border border-gray-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
+            className="flex-1 min-w-0 border border-gray-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
           />
           <button
             type="submit"
             disabled={loading || !disease.trim()}
-            className="bg-teal-600 hover:bg-teal-700 text-white text-sm font-medium px-5 py-2.5 rounded-lg transition-colors disabled:opacity-60 flex items-center gap-2"
+            className="w-full sm:w-auto bg-teal-600 hover:bg-teal-700 text-white text-sm font-medium px-5 py-2.5 rounded-lg transition-colors disabled:opacity-60 flex items-center justify-center gap-2"
           >
             {loading
               ? <><span className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" /> Loading…</>
@@ -120,9 +123,11 @@ export default function SkinDetector() {
 
       {/* ── RAG results ── */}
       {result && (
-        <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 mb-4">
-          <div className="flex items-center gap-2 mb-4">
-            <span className="text-sm font-semibold text-gray-800">HealNet Insights for {disease}</span>
+        <div className="bg-white rounded-xl sm:rounded-2xl shadow-sm border border-gray-100 p-4 sm:p-6 mb-4">
+          <div className="flex flex-wrap items-center gap-2 mb-4">
+            <span className="text-sm font-semibold text-gray-800 w-full sm:w-auto">
+              HealNet Insights for {disease}
+            </span>
             <span className="text-xs bg-teal-100 text-teal-700 px-2 py-0.5 rounded-full font-medium">
               {result.mode === 'hybrid' ? 'Community + Knowledge Base' : 'AI Knowledge'}
             </span>

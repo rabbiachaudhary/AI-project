@@ -114,22 +114,24 @@ export default function Chat() {
   }
 
   return (
-    <div className="max-w-2xl mx-auto flex flex-col h-[calc(100vh-8rem)]">
-      <div className="flex items-center justify-between mb-4">
-        <div>
-          <h1 className="text-xl font-bold text-gray-900">HealNet AI</h1>
-          <p className="text-xs text-gray-400">Skin disease answers grounded in community experiences + dermatology knowledge graph</p>
+    <div className="max-w-2xl mx-auto flex flex-col h-full min-h-0">
+      <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-3 sm:mb-4 flex-shrink-0">
+        <div className="min-w-0">
+          <h1 className="text-lg sm:text-xl font-bold text-gray-900">HealNet AI</h1>
+          <p className="text-xs text-gray-400 leading-relaxed">
+            Skin health answers from community experiences + dermatology knowledge
+          </p>
         </div>
         <button
           onClick={() => setShowFilters((f) => !f)}
-          className="text-sm text-teal-600 hover:underline"
+          className="text-sm text-teal-600 hover:underline self-start sm:self-auto flex-shrink-0"
         >
-          {showFilters ? 'Hide' : 'Context'} filters
+          {showFilters ? 'Hide filters' : 'Context filters'}
         </button>
       </div>
 
       {showFilters && (
-        <div className="bg-teal-50 border border-teal-100 rounded-xl p-4 mb-4 grid grid-cols-3 gap-3">
+        <div className="bg-teal-50 border border-teal-100 rounded-xl p-3 sm:p-4 mb-3 sm:mb-4 grid grid-cols-1 sm:grid-cols-3 gap-3 flex-shrink-0">
           <div>
             <label className="text-xs font-medium text-gray-600 block mb-1">Disease</label>
             <input
@@ -161,11 +163,11 @@ export default function Chat() {
       )}
 
       {/* Messages */}
-      <div className="flex-1 overflow-y-auto space-y-4 pr-1">
+      <div className="flex-1 overflow-y-auto overscroll-contain space-y-3 sm:space-y-4 pr-0.5 sm:pr-1 min-h-0">
         {messages.map((msg, i) => (
           <div key={i} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
             <div
-              className={`max-w-[85%] rounded-2xl px-4 py-3 text-sm ${
+              className={`max-w-[92%] sm:max-w-[85%] rounded-2xl px-3 py-2.5 sm:px-4 sm:py-3 text-sm break-words ${
                 msg.role === 'user'
                   ? 'bg-teal-600 text-white rounded-br-sm'
                   : 'bg-white border border-gray-100 text-gray-800 rounded-bl-sm shadow-sm'
@@ -210,24 +212,25 @@ export default function Chat() {
       </div>
 
       {/* Input */}
-      <form onSubmit={handleSend} className="mt-4 flex gap-2">
+      <form onSubmit={handleSend} className="mt-3 sm:mt-4 flex gap-2 flex-shrink-0 pb-1">
         <input
           value={input}
           onChange={(e) => setInput(e.target.value)}
           disabled={loading}
-          placeholder="Ask about your skin condition, symptoms, or treatments…"
-          className="flex-1 border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500 disabled:opacity-60"
+          placeholder="Ask about skin conditions, symptoms…"
+          className="flex-1 min-w-0 border border-gray-200 rounded-xl px-3 sm:px-4 py-2.5 sm:py-3 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500 disabled:opacity-60"
         />
         <button
           type="submit"
           disabled={loading || !input.trim()}
-          className="bg-teal-600 hover:bg-teal-700 text-white px-5 py-3 rounded-xl transition-colors disabled:opacity-60"
+          className="bg-teal-600 hover:bg-teal-700 text-white px-4 sm:px-5 py-2.5 sm:py-3 rounded-xl transition-colors disabled:opacity-60 flex-shrink-0"
+          aria-label="Send message"
         >
           →
         </button>
       </form>
 
-      <p className="text-center text-xs text-gray-300 mt-2">
+      <p className="text-center text-xs text-gray-300 mt-1.5 sm:mt-2 flex-shrink-0 px-1">
         Not a substitute for professional dermatological advice. Always consult a licensed dermatologist.
       </p>
     </div>

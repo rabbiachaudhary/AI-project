@@ -22,11 +22,18 @@ function PrivateRoute({ children }) {
 function AppLayout() {
   const { pathname } = useLocation()
   const isLanding = pathname === '/'
+  const isChat = pathname === '/chat'
+
+  const mainCls = isLanding
+    ? ''
+    : isChat
+      ? 'max-w-4xl mx-auto px-4 sm:px-6 py-2 sm:py-4 w-full min-w-0 h-[calc(100dvh-3.5rem)] sm:h-auto sm:min-h-0'
+      : 'max-w-4xl mx-auto px-4 sm:px-6 py-4 sm:py-8 w-full min-w-0'
 
   return (
     <div className="min-h-screen bg-gray-50">
       <Navbar />
-      <main className={isLanding ? '' : 'max-w-4xl mx-auto px-4 py-8'}>
+      <main className={mainCls}>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />

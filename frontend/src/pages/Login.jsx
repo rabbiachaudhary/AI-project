@@ -27,9 +27,9 @@ export default function Login() {
   }
 
   return (
-    <div className="flex justify-center items-center min-h-[60vh]">
-      <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-8 w-full max-w-md">
-        <h1 className="text-2xl font-bold text-gray-900 mb-1">Welcome back</h1>
+    <div className="flex justify-center items-center min-h-[50vh] sm:min-h-[60vh] py-4">
+      <div className="bg-white rounded-xl sm:rounded-2xl shadow-sm border border-gray-100 p-5 sm:p-8 w-full max-w-md">
+        <h1 className="text-xl sm:text-2xl font-bold text-gray-900 mb-1">Welcome back</h1>
         <p className="text-gray-500 text-sm mb-6">Sign in to your HealNet account</p>
 
         {error && (

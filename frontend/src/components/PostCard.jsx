@@ -27,13 +27,13 @@ export default function PostCard({ post }) {
 
   return (
     <Link to={`/posts/${post.id}`} className="block group">
-      <div className="bg-white border border-gray-100 rounded-2xl p-5 hover:border-teal-200 hover:shadow-sm transition-all">
+      <div className="bg-white border border-gray-100 rounded-xl sm:rounded-2xl p-4 sm:p-5 hover:border-teal-200 hover:shadow-sm transition-all">
         {/* Header */}
-        <div className="flex items-start justify-between gap-4 mb-2">
-          <h2 className="font-semibold text-gray-900 group-hover:text-teal-700 transition-colors leading-snug">
+        <div className="flex items-start justify-between gap-2 sm:gap-4 mb-2">
+          <h2 className="font-semibold text-gray-900 group-hover:text-teal-700 transition-colors leading-snug min-w-0 break-words">
             {post.title}
           </h2>
-          <span className="text-sm text-gray-400 whitespace-nowrap flex items-center gap-1 flex-shrink-0">
+          <span className="text-sm text-gray-400 whitespace-nowrap flex items-center gap-1 flex-shrink-0 pt-0.5">
             <span className="text-teal-500">▲</span> {post.upvotes}
           </span>
         </div>
