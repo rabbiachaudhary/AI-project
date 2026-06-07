@@ -1,10 +1,10 @@
-from sentence_transformers import SentenceTransformer
-
-_model: SentenceTransformer | None = None
+_model = None
 
 
 def load_embedding_model():
     global _model
+    from sentence_transformers import SentenceTransformer
+
     print("Loading all-MiniLM-L6-v2 embedding model...")
     _model = SentenceTransformer("all-MiniLM-L6-v2")
     print("Embedding model loaded.")

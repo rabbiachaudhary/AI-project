@@ -90,6 +90,8 @@ def predict_disease(query_text: str, extracted_symptoms: list[str]) -> dict:
     Returns a dict with disease, confidence, alternatives, ml_used flag.
     """
     if not _available or _pipeline is None:
+        load_or_train_model()
+    if not _available or _pipeline is None:
         return {"disease": None, "confidence": 0.0, "alternatives": [], "ml_used": False}
 
     from services.medical_kb import DISEASE_KB
