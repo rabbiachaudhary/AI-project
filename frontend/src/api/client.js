@@ -1,10 +1,10 @@
 import axios from 'axios'
 
-const BASE_URL = import.meta.env.VITE_API_URL || (import.meta.env.DEV ? 'http://localhost:8000' : '')
+const BASE_URL = import.meta.env.VITE_API_URL || (import.meta.env.DEV ? 'http://localhost:8000' : '/api')
 
 if (!import.meta.env.DEV && !import.meta.env.VITE_API_URL) {
   console.error(
-    'HealNet frontend: VITE_API_URL is missing in production. Set it to your Render backend URL in Vercel environment variables.'
+    'HealNet frontend: VITE_API_URL is missing in production. Falling back to /api. If your backend is on Render, set VITE_API_URL to the Render URL in Vercel.'
   )
 }
 
