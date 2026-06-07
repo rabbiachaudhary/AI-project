@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom'
 import { AuthProvider, useAuth } from './context/AuthContext'
 import Navbar from './components/Navbar'
 import Home from './pages/Home'
@@ -19,24 +19,33 @@ function PrivateRoute({ children }) {
   return user ? children : <Navigate to="/login" replace />
 }
 
+function AppLayout() {
+  const { pathname } = useLocation()
+  const isLanding = pathname === '/'
+
+  return (
+    <div className="min-h-screen bg-gray-50">
+      <Navbar />
+      <main className={isLanding ? '' : 'max-w-4xl mx-auto px-4 py-8'}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/posts/:id" element={<PostDetail />} />
+          <Route path="/create" element={<PrivateRoute><CreatePost /></PrivateRoute>} />
+          <Route path="/chat" element={<Chat />} />
+          <Route path="/detect" element={<SkinDetector />} />
+        </Routes>
+      </main>
+    </div>
+  )
+}
+
 export default function App() {
   return (
     <AuthProvider>
       <BrowserRouter>
-        <div className="min-h-screen bg-gray-50">
-          <Navbar />
-          <main className="max-w-4xl mx-auto px-4 py-8">
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/register" element={<Register />} />
-              <Route path="/posts/:id" element={<PostDetail />} />
-              <Route path="/create" element={<PrivateRoute><CreatePost /></PrivateRoute>} />
-              <Route path="/chat" element={<Chat />} />
-              <Route path="/detect" element={<SkinDetector />} />
-            </Routes>
-          </main>
-        </div>
+        <AppLayout />
       </BrowserRouter>
     </AuthProvider>
   )

@@ -82,7 +82,7 @@ export default function SkinDetector() {
           <span className="text-sm font-medium text-gray-700">Step 1 — Upload your image and get a diagnosis</span>
         </div>
         <iframe
-          src="https://hassam001-skin-disease-detection.hf.space"
+          src="https://jamesnixon94-skin-conditions.hf.space"
           title="Skin Disease Detector"
           allow="camera"
           className="w-full border-0"
