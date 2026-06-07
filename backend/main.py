@@ -19,11 +19,7 @@ def _cors_origins() -> list[str]:
     if configured:
         return [origin.strip() for origin in configured.split(",") if origin.strip()]
 
-    frontend_url = os.getenv("FRONTEND_URL", "").strip()
-    origins = ["http://localhost:5173", "http://localhost:3000"]
-    if frontend_url:
-        origins.append(frontend_url)
-    return origins
+    return ["*"]
 
 
 def _strict_startup() -> bool:
@@ -69,7 +65,7 @@ app = FastAPI(title="HealNet API", version="1.0.0", lifespan=lifespan)
 app.add_middleware(
     CORSMiddleware,
     allow_origins=_cors_origins(),
-    allow_credentials=True,
+    allow_credentials=False,
     allow_methods=["*"],
     allow_headers=["*"],
 )
