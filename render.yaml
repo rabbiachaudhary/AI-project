@@ -1,0 +1,31 @@
+services:
+  - type: web
+    name: healnet-backend
+    env: python
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    autoDeploy: true
+    envVars:
+      - key: PORT
+        value: 10000
+      - key: STRICT_STARTUP
+        value: false
+      - key: CORS_ORIGINS
+        sync: false
+      - key: FRONTEND_URL
+        sync: false
+      - key: POSTGRES_URL
+        sync: false
+      - key: MONGO_URL
+        sync: false
+      - key: NEO4J_URL
+        sync: false
+      - key: NEO4J_USER
+        sync: false
+      - key: NEO4J_PASSWORD
+        sync: false
+      - key: OPENROUTER_API_KEY
+        sync: false
+      - key: SECRET_KEY
+        sync: false
