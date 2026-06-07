@@ -7,6 +7,7 @@ import Register from './pages/Register'
 import PostDetail from './pages/PostDetail'
 import CreatePost from './pages/CreatePost'
 import Chat from './pages/Chat'
+import SkinDetector from './pages/SkinDetector'
 
 function PrivateRoute({ children }) {
   const { user, loading } = useAuth()
@@ -32,6 +33,7 @@ export default function App() {
               <Route path="/posts/:id" element={<PostDetail />} />
               <Route path="/create" element={<PrivateRoute><CreatePost /></PrivateRoute>} />
               <Route path="/chat" element={<Chat />} />
+              <Route path="/detect" element={<SkinDetector />} />
             </Routes>
           </main>
         </div>

@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000'
+const BASE_URL = import.meta.env.VITE_API_URL || (import.meta.env.DEV ? 'http://localhost:8000' : '')
 
 const client = axios.create({ baseURL: BASE_URL })
 
@@ -47,4 +47,12 @@ export const searchApi = {
 export const chatApi = {
   send: (query, disease, symptoms, medications) =>
     client.post('/chat/', { query, disease, symptoms, medications }),
+}
+
+export const detectApi = {
+  analyze: (imageFile) => {
+    const form = new FormData()
+    form.append('image', imageFile)
+    return client.post('/detect/', form)
+  },
 }

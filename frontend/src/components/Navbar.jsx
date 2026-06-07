@@ -34,6 +34,9 @@ export default function Navbar() {
           <NavLink to="/chat" className={linkCls}>
             AI Chat
           </NavLink>
+          <NavLink to="/detect" className={linkCls}>
+            Skin Detector
+          </NavLink>
         </div>
 
         {/* Auth */}
