@@ -2,6 +2,12 @@ import axios from 'axios'
 
 const BASE_URL = import.meta.env.VITE_API_URL || (import.meta.env.DEV ? 'http://localhost:8000' : '')
 
+if (!import.meta.env.DEV && !import.meta.env.VITE_API_URL) {
+  console.error(
+    'HealNet frontend: VITE_API_URL is missing in production. Set it to your Render backend URL in Vercel environment variables.'
+  )
+}
+
 const client = axios.create({ baseURL: BASE_URL })
 
 client.interceptors.request.use((config) => {
