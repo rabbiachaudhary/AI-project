@@ -26,16 +26,44 @@ def _cors_origins() -> list[str]:
     return origins
 
 
+def _strict_startup() -> bool:
+    return os.getenv("STRICT_STARTUP", "false").strip().lower() in {"1", "true", "yes", "on"}
+
+
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    await init_db()
-    await connect_mongo()
-    await connect_neo4j()
-    load_embedding_model()
+    startup_errors: list[str] = []
+
+    async def _run_async_step(name: str, fn):
+        try:
+            await fn()
+            print(f"[startup] {name}: ok")
+        except Exception as e:
+            startup_errors.append(f"{name}: {e}")
+            print(f"[startup] {name}: failed -> {e}")
+
+    def _run_sync_step(name: str, fn):
+        try:
+            fn()
+            print(f"[startup] {name}: ok")
+        except Exception as e:
+            startup_errors.append(f"{name}: {e}")
+            print(f"[startup] {name}: failed -> {e}")
+
+    await _run_async_step("postgres", init_db)
+    await _run_async_step("mongo", connect_mongo)
+    await _run_async_step("neo4j", connect_neo4j)
+    _run_sync_step("embedding_model", load_embedding_model)
+
     from services.mongo_service import init_chunks_index
-    await init_chunks_index()
+    await _run_async_step("mongo_chunk_indexes", init_chunks_index)
+
     from services.disease_predictor import load_or_train_model
-    load_or_train_model()
+    _run_sync_step("disease_model", load_or_train_model)
+
+    if startup_errors and _strict_startup():
+        raise RuntimeError("Startup failed with STRICT_STARTUP enabled: " + " | ".join(startup_errors))
+
     yield
     await disconnect_mongo()
     await disconnect_neo4j()

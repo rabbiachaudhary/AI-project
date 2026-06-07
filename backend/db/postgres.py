@@ -22,16 +22,20 @@ def _asyncpg_url(url: str) -> tuple[str, dict]:
     return clean_url, connect_args
 
 
-_db_url, _connect_args = _asyncpg_url(settings.postgres_url)
-_connect_args["command_timeout"] = 30
-engine = create_async_engine(
-    _db_url,
-    connect_args=_connect_args,
-    pool_pre_ping=True,
-    pool_recycle=300,
-    echo=False,
-)
-AsyncSessionLocal = async_sessionmaker(engine, expire_on_commit=False)
+engine = None
+AsyncSessionLocal = None
+
+if settings.postgres_url:
+    _db_url, _connect_args = _asyncpg_url(settings.postgres_url)
+    _connect_args["command_timeout"] = 30
+    engine = create_async_engine(
+        _db_url,
+        connect_args=_connect_args,
+        pool_pre_ping=True,
+        pool_recycle=300,
+        echo=False,
+    )
+    AsyncSessionLocal = async_sessionmaker(engine, expire_on_commit=False)
 
 
 class Base(DeclarativeBase):
@@ -39,11 +43,16 @@ class Base(DeclarativeBase):
 
 
 async def init_db():
+    if engine is None:
+        print("[postgres] POSTGRES_URL not set; skipping SQL schema init.")
+        return
     async with engine.begin() as conn:
         from models.pg_models import User, Profile  # noqa: F401 — registers tables with Base
         await conn.run_sync(Base.metadata.create_all)
 
 
 async def get_db():
+    if AsyncSessionLocal is None:
+        raise RuntimeError("POSTGRES_URL is not configured")
     async with AsyncSessionLocal() as session:
         yield session

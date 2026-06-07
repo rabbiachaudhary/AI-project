@@ -7,6 +7,9 @@ _driver: AsyncDriver | None = None
 
 async def connect_neo4j():
     global _driver
+    if not settings.neo4j_url or not settings.neo4j_password:
+        print("[neo4j] NEO4J_URL/NEO4J_PASSWORD not set; skipping Neo4j connection.")
+        return
     _driver = AsyncGraphDatabase.driver(
         settings.neo4j_url,
         auth=(settings.neo4j_user, settings.neo4j_password),
@@ -29,4 +32,6 @@ async def disconnect_neo4j():
 
 
 def get_driver() -> AsyncDriver:
+    if _driver is None:
+        raise RuntimeError("Neo4j driver is not initialized")
     return _driver

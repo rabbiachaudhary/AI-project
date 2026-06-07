@@ -7,6 +7,9 @@ _client: AsyncIOMotorClient | None = None
 
 async def connect_mongo():
     global _client
+    if not settings.mongo_url:
+        print("[mongo] MONGO_URL not set; skipping MongoDB connection.")
+        return
     _client = AsyncIOMotorClient(
         settings.mongo_url,
         serverSelectionTimeoutMS=10000,
@@ -24,6 +27,8 @@ async def disconnect_mongo():
 
 
 def get_db() -> AsyncIOMotorDatabase:
+    if _client is None:
+        raise RuntimeError("MONGO_URL is not configured or MongoDB is not connected")
     return _client[settings.mongo_db]
 
 
