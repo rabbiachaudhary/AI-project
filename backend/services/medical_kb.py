@@ -1,6 +1,6 @@
 """
 Skin-disease medical knowledge base.
-HealNet is a skin disease community platform — only dermatological conditions are included.
+DermaCom is a skin disease community platform — only dermatological conditions are included.
 """
 
 from typing import TypedDict

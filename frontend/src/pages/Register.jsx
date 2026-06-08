@@ -18,7 +18,7 @@ export default function Register() {
       const res = await authApi.register(form.email, form.password, form.username)
       const { access_token, username, user_id } = res.data
       login(access_token, { id: user_id, username, email: form.email })
-      navigate('/')
+      navigate('/#community')
     } catch (err) {
       setError(err.response?.data?.detail || 'Registration failed. Please try again.')
     } finally {
@@ -29,7 +29,7 @@ export default function Register() {
   return (
     <div className="flex justify-center items-center min-h-[50vh] sm:min-h-[60vh] py-4">
       <div className="bg-white rounded-xl sm:rounded-2xl shadow-sm border border-gray-100 p-5 sm:p-8 w-full max-w-md">
-        <h1 className="text-xl sm:text-2xl font-bold text-gray-900 mb-1">Join HealNet</h1>
+        <h1 className="text-xl sm:text-2xl font-bold text-gray-900 mb-1">Join DermaCom</h1>
         <p className="text-gray-500 text-sm mb-6">Share your health experiences and help others</p>
 
         {error && (

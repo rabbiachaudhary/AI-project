@@ -69,7 +69,7 @@ export default function Chat() {
   const [messages, setMessages] = useState([
     {
       role: 'assistant',
-      content: "Hi! I'm HealNet's AI skin health assistant. I answer questions about skin conditions using real experiences shared by our community and a dermatology knowledge graph. Ask me about skin symptoms, conditions like acne, eczema or psoriasis, skincare treatments, or medications.",
+      content: "Hi! I'm DermaCom's AI skin health assistant. I answer questions about skin conditions using real experiences shared by our community and a dermatology knowledge graph. Ask me about skin symptoms, conditions like acne, eczema or psoriasis, skincare treatments, or medications.",
     },
   ])
   const [input, setInput] = useState('')
@@ -117,7 +117,7 @@ export default function Chat() {
     <div className="max-w-2xl mx-auto flex flex-col h-full min-h-0">
       <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-3 sm:mb-4 flex-shrink-0">
         <div className="min-w-0">
-          <h1 className="text-lg sm:text-xl font-bold text-gray-900">HealNet AI</h1>
+          <h1 className="text-lg sm:text-xl font-bold text-gray-900">DermaCom AI</h1>
           <p className="text-xs text-gray-400 leading-relaxed">
             Skin health answers from community experiences + dermatology knowledge
           </p>

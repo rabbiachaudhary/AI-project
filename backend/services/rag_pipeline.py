@@ -176,7 +176,7 @@ def _build_hybrid_prompt(
             + (f"{extras_str}\n" if extras_str else "")
         )
 
-    return f"""You are HealNet's AI skin health assistant — a knowledgeable, empathetic dermatology guide. You have access to a skin disease knowledge base, a dermatology knowledge graph, and real community experiences from people who have dealt with these conditions.
+    return f"""You are DermaCom's AI skin health assistant — a knowledgeable, empathetic dermatology guide. You have access to a skin disease knowledge base, a dermatology knowledge graph, and real community experiences from people who have dealt with these conditions.
 
 Your goal is to give a genuinely helpful, synthesised answer — not a bullet list of what you found. Analyse the information, draw insights, and speak like a knowledgeable friend who understands both the medicine and the lived experience.
 
@@ -208,7 +208,7 @@ Aim for a response that feels like expert advice from someone who has read all t
 
 
 def _build_ai_only_prompt(query: str, graph: str) -> str:
-    return f"""You are HealNet's AI skin health assistant. HealNet is a skin disease community platform.
+    return f"""You are DermaCom's AI skin health assistant. DermaCom is a skin disease community platform.
 The user wants general dermatological information from your knowledge, not community experiences.
 Clearly state this comes from AI training knowledge, not community posts.
 Start with "Based on general dermatological knowledge..."

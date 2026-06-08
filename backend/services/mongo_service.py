@@ -7,8 +7,8 @@ from models.mongo_models import PostCreate, PostResponse, CommentCreate, Comment
 from services.embedding import get_embedding
 from services.chunking import make_post_chunks
 
-VECTOR_INDEX_NAME = "healnet_posts_vector_index"
-CHUNKS_INDEX_NAME = "healnet_chunks_vector_index"
+VECTOR_INDEX_NAME = "dermacom_posts_vector_index"
+CHUNKS_INDEX_NAME = "dermacom_chunks_vector_index"
 
 
 def _doc_to_post(doc: dict) -> PostResponse:

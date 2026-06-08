@@ -8,22 +8,22 @@ export function AuthProvider({ children }) {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    const token = localStorage.getItem('healnet_token')
+    const token = localStorage.getItem('dermacom_token')
     if (!token) { setLoading(false); return }
 
     authApi.me()
       .then((res) => setUser(res.data))
-      .catch(() => localStorage.removeItem('healnet_token'))
+      .catch(() => localStorage.removeItem('dermacom_token'))
       .finally(() => setLoading(false))
   }, [])
 
   const login = (token, userData) => {
-    localStorage.setItem('healnet_token', token)
+    localStorage.setItem('dermacom_token', token)
     setUser(userData)
   }
 
   const logout = () => {
-    localStorage.removeItem('healnet_token')
+    localStorage.removeItem('dermacom_token')
     setUser(null)
   }
 

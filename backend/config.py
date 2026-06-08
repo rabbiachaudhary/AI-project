@@ -4,7 +4,7 @@ from pydantic_settings import BaseSettings
 class Settings(BaseSettings):
     postgres_url: str = ""
     mongo_url: str = ""
-    mongo_db: str = "healnet"
+    mongo_db: str = "dermacom"
     neo4j_url: str = ""
     neo4j_user: str = "neo4j"
     neo4j_password: str = ""

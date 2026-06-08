@@ -60,7 +60,7 @@ async def lifespan(app: FastAPI):
     await disconnect_neo4j()
 
 
-app = FastAPI(title="HealNet API", version="1.0.0", lifespan=lifespan)
+app = FastAPI(title="DermaCom API", version="1.0.0", lifespan=lifespan)
 
 app.add_middleware(
     CORSMiddleware,
@@ -102,7 +102,7 @@ async def health():
 
     return {
         "status": "ok",
-        "service": "HealNet API",
+        "service": "DermaCom API",
         "neo4j": {"connected": neo4j_ok, "error": neo4j_error},
         "mongodb": {"connected": mongo_ok, "error": mongo_error},
         "disease_model": {"loaded": model_available()},

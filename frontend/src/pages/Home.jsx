@@ -53,6 +53,16 @@ export default function Home() {
       .finally(() => setLoading(false))
   }, [])
 
+  useEffect(() => {
+    const hash = window.location.hash
+    if (!hash) return
+    const id = hash.slice(1)
+    const timer = setTimeout(() => {
+      document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
+    }, 150)
+    return () => clearTimeout(timer)
+  }, [])
+
   const handleSearch = async (e) => {
     e.preventDefault()
     if (!searchQuery.trim()) {
@@ -97,7 +107,7 @@ export default function Home() {
             </h1>
 
             <p className="text-base sm:text-xl text-teal-100/90 leading-relaxed mb-6 sm:mb-8 max-w-2xl mx-auto px-1">
-              HealNet connects you with community experiences, an AI health assistant, and skin
+              DermaCom connects you with community experiences, an AI health assistant, and skin
               condition detection — so you never navigate health alone.
             </p>
 
@@ -178,7 +188,7 @@ export default function Home() {
             Everything you need in one place
           </h2>
           <p className="text-gray-500 text-base sm:text-lg max-w-2xl mx-auto">
-            From sharing your journey to getting AI-powered insights — HealNet is built for
+            From sharing your journey to getting AI-powered insights — DermaCom is built for
             skin health and beyond.
           </p>
         </div>
@@ -213,7 +223,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-20">
           <div className="text-center mb-8 sm:mb-14">
             <h2 className="text-2xl sm:text-4xl font-bold text-gray-900 mb-3 sm:mb-4">How it works</h2>
-            <p className="text-gray-500 text-base sm:text-lg">Three simple steps to get value from HealNet</p>
+            <p className="text-gray-500 text-base sm:text-lg">Three simple steps to get value from DermaCom</p>
           </div>
 
           <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
@@ -311,7 +321,7 @@ export default function Home() {
             </h2>
             <p className="text-teal-100 mb-8 max-w-lg mx-auto">
               Create a free account to share your experience, upvote stories, and unlock the full
-              HealNet experience.
+              DermaCom experience.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
               <Link
@@ -337,9 +347,9 @@ export default function Home() {
           <div className="flex flex-col items-center gap-5 sm:gap-4 text-center sm:text-left sm:flex-row sm:items-center sm:justify-between">
             <div className="flex items-center gap-2">
               <div className="w-7 h-7 bg-teal-600 rounded-lg flex items-center justify-center">
-                <span className="text-white text-xs font-bold">H</span>
+                <span className="text-white text-xs font-bold">D</span>
               </div>
-              <span className="font-bold text-gray-900">HealNet</span>
+              <span className="font-bold text-gray-900">DermaCom</span>
             </div>
             <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-sm text-gray-500">
               <Link to="/chat" className="hover:text-gray-900 transition-colors">AI Chat</Link>

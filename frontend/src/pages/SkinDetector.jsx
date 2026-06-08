@@ -71,7 +71,7 @@ export default function SkinDetector() {
       <div className="mb-4 sm:mb-5">
         <h1 className="text-xl sm:text-2xl font-bold text-gray-900">AI Skin Disease Detector</h1>
         <p className="text-sm text-gray-400 mt-1 leading-relaxed">
-          Upload your image below — then enter the detected condition to get community insights from HealNet
+          Upload your image below — then enter the detected condition to get community insights from DermaCom
         </p>
       </div>
 
@@ -96,7 +96,7 @@ export default function SkinDetector() {
         <div className="flex items-start gap-2 mb-4">
           <span className="w-2 h-2 rounded-full bg-teal-500 flex-shrink-0 mt-1.5" />
           <span className="text-xs sm:text-sm font-medium text-gray-700 leading-snug">
-            Step 2 — Get HealNet community insights for the detected condition
+            Step 2 — Get DermaCom community insights for the detected condition
           </span>
         </div>
 
@@ -126,7 +126,7 @@ export default function SkinDetector() {
         <div className="bg-white rounded-xl sm:rounded-2xl shadow-sm border border-gray-100 p-4 sm:p-6 mb-4">
           <div className="flex flex-wrap items-center gap-2 mb-4">
             <span className="text-sm font-semibold text-gray-800 w-full sm:w-auto">
-              HealNet Insights for {disease}
+              DermaCom Insights for {disease}
             </span>
             <span className="text-xs bg-teal-100 text-teal-700 px-2 py-0.5 rounded-full font-medium">
               {result.mode === 'hybrid' ? 'Community + Knowledge Base' : 'AI Knowledge'}

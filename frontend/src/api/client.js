@@ -4,14 +4,14 @@ const BASE_URL = import.meta.env.VITE_API_URL || (import.meta.env.DEV ? 'http://
 
 if (!import.meta.env.DEV && !import.meta.env.VITE_API_URL) {
   console.error(
-    'HealNet frontend: VITE_API_URL is missing in production. Falling back to /api. If your backend is on Render, set VITE_API_URL to the Render URL in Vercel.'
+    'DermaCom frontend: VITE_API_URL is missing in production. Falling back to /api. If your backend is on Render, set VITE_API_URL to the Render URL in Vercel.'
   )
 }
 
 const client = axios.create({ baseURL: BASE_URL })
 
 client.interceptors.request.use((config) => {
-  const token = localStorage.getItem('healnet_token')
+  const token = localStorage.getItem('dermacom_token')
   if (token) config.headers.Authorization = `Bearer ${token}`
   return config
 })

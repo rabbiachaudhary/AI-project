@@ -3,7 +3,7 @@ import re
 
 from services.openrouter_service import generate_response
 
-_PROMPT = """You are a dermatology NLP assistant for HealNet, a skin disease community platform.
+_PROMPT = """You are a dermatology NLP assistant for DermaCom, a skin disease community platform.
 Extract structured information from this skin condition experience post.
 
 Return ONLY a valid JSON object — no explanation, no markdown, just raw JSON:

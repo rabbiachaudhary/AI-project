@@ -3,10 +3,10 @@ import { useParams, useNavigate } from 'react-router-dom'
 import { postsApi } from '../api/client'
 import { useAuth } from '../context/AuthContext'
 
-const getUpvotedIds = () => JSON.parse(localStorage.getItem('healnet_upvoted') || '[]')
+const getUpvotedIds = () => JSON.parse(localStorage.getItem('dermacom_upvoted') || '[]')
 const saveUpvotedId = (id) => {
   const ids = getUpvotedIds()
-  if (!ids.includes(id)) localStorage.setItem('healnet_upvoted', JSON.stringify([...ids, id]))
+  if (!ids.includes(id)) localStorage.setItem('dermacom_upvoted', JSON.stringify([...ids, id]))
 }
 
 function Tag({ label, color = 'teal' }) {

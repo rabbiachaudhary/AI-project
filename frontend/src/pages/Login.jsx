@@ -18,7 +18,7 @@ export default function Login() {
       const res = await authApi.login(form.email, form.password)
       const { access_token, username, user_id } = res.data
       login(access_token, { id: user_id, username, email: form.email })
-      navigate('/')
+      navigate('/#community')
     } catch (err) {
       setError(err.response?.data?.detail || 'Login failed. Please try again.')
     } finally {
@@ -30,7 +30,7 @@ export default function Login() {
     <div className="flex justify-center items-center min-h-[50vh] sm:min-h-[60vh] py-4">
       <div className="bg-white rounded-xl sm:rounded-2xl shadow-sm border border-gray-100 p-5 sm:p-8 w-full max-w-md">
         <h1 className="text-xl sm:text-2xl font-bold text-gray-900 mb-1">Welcome back</h1>
-        <p className="text-gray-500 text-sm mb-6">Sign in to your HealNet account</p>
+        <p className="text-gray-500 text-sm mb-6">Sign in to your DermaCom account</p>
 
         {error && (
           <div className="bg-red-50 border border-red-200 text-red-700 rounded-lg px-4 py-3 mb-4 text-sm">
@@ -71,7 +71,7 @@ export default function Login() {
         </form>
 
         <p className="mt-5 text-center text-sm text-gray-500">
-          New to HealNet?{' '}
+          New to DermaCom?{' '}
           <Link to="/register" className="text-teal-600 hover:underline font-medium">
             Create an account
           </Link>
